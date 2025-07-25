@@ -1,13 +1,22 @@
 CC = gcc
-CFLAGS = -Wall -Iinclude
+CFLAGS = -Wall -Iinclude -g
+
 SRC = $(wildcard src/*.c)
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:src/%.c=build/%.o)
 BIN = forge
 
 all: $(BIN)
 
-$(BIN): $(SRC)
-	$(CC) $(CFLAGS) -o $@ $(SRC)
+$(BIN): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+
+build/%.o: src/%.c | build
+	$(CC) $(CFLAGS) -c $< -o $@
+
+build:
+	mkdir -p build
 
 clean:
-	rm -f $(BIN)
+	rm -rf build $(BIN)
+
+.PHONY: all clean
