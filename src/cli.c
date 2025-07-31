@@ -2,6 +2,7 @@
 #include <string.h>
 
 #include "forge.h"
+#include "utils.h"
 
 void parse_args(int argc, char *argv[])
 {

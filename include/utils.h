@@ -1,0 +1,1 @@
+const char *get_template_path(const char *template_name, char *buffer, size_t size);
