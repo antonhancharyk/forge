@@ -3,16 +3,19 @@
 
 #include "forge.h"
 
-void parse_args(int argc, char *argv[]) {
-    if (argc < 3) {
+void parse_args(int argc, char *argv[])
+{
+    if (argc < 3)
+    {
         fprintf(stderr, "Usage: forge <template> <output> <arguments (key=value)>\n");
         return;
     }
-    
+
     int var_count = argc - 3;
 
     char **vars = NULL;
-    if (var_count > 0) {
+    if (var_count > 0)
+    {
         vars = &argv[3];
     }
 
